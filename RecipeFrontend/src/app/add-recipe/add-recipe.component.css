@@ -1,0 +1,15 @@
+.container {
+    text-align: center;
+    color: blue;
+    border: dashed;
+    align-items: center;
+    background-color: antiquewhite;
+}
+
+form label {
+    color: black;
+}
+
+form input {
+    width: 80%;
+}

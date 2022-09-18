@@ -1,0 +1,35 @@
+<div class="container col-4">
+    <p>Add-Recipe</p>
+    <form [formGroup]="addItem" (ngSubmit)="addRecipe()">
+        <label>Recipe Id :</label><br>
+        <input type="number" placeholder="Enter Recipe Id Number" min="1" formControlName="recipeId"
+            [(ngModel)]="recipe.recipeId">
+        <br>
+        <span style="color: red;" *ngIf="recipeId && recipeId.invalid && recipeId.touched">valid Recipe Id
+            requied</span><br>
+        <label>Veg<input type="radio" formControlName="veg" value="veg" [(ngModel)]="recipe.veg"></label> &nbsp;
+        <label>&nbsp; Non-Veg<input type="radio" formControlName="veg" value="non-veg" [(ngModel)]="recipe.veg"></label>
+        <span style="color: red;" *ngIf="veg && veg.invalid && veg.touched">only veg and non-veg requied</span><br>
+        <br>
+        <label>Serve Person :</label><br>
+        <input type="number" placeholder="no. of persons for serve" min="1" formControlName="serve"
+            [(ngModel)]="recipe.serve">
+        <br>
+        <span style="color: red;" *ngIf="serve && serve.invalid && serve.touched">no. of person requied</span><br>
+
+        <label>Ingredient name :</label><br>
+        <input type="text " placeholder="Enter name of ingredient" formControlName="ingred"
+            [(ngModel)]="recipe.ingredent">
+        <br>
+        <span style="color: red;" *ngIf="ingred && ingred.invalid && ingred.touched">Ingredient name requied</span><br>
+
+        <label>Instructions :</label><br>
+        <input type="text " placeholder="name induction or oven used" formControlName="instruc"
+            [(ngModel)]="recipe.instruction">
+        <br>
+        <span style="color: red;" *ngIf="instruc && instruc.invalid && instruc.touched">input induction or oven
+            required</span><br>
+        <button [disabled]="addItem.invalid">Add Recipe</button>
+
+    </form>
+</div>

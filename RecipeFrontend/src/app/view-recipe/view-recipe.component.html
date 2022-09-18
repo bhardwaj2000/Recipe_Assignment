@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="search-recipe">
+      <label for="search"> Search-recipe : </label>&nbsp;
+      <input type="text" name="search" [(ngModel)]="searchText" placeholder="search by ingredient">
+    </div>
+
+    <h3 style="text-align: center;">Recipe Details</h3>
+    <table class="table align-middle" border="solid">
+      <thead>
+        <tr>
+          <th scope="col">Recipe ID</th>
+          <th scope="col">Veg</th>
+          <th scope="col">NO. of Serve</th>
+          <th scope="col">Ingredient</th>
+          <th scope="col">Instruction</th>
+          <th scope="col">Update Recipe</th>
+          <th scope="col">Delete Recipe</th>
+
+        </tr>
+      </thead>
+      <tbody align="center">
+        <tr *ngFor="let r of recipe |filter:searchText">
+          <td>{{r.recipeId}}</td>
+          <td>{{r.veg}}</td>
+          <td>{{r.serve}}</td>
+          <td>{{r.ingredent}}</td>
+          <td>{{r.instruction}}</td>
+          <td><button class="btn btn-success" (click)="updateRecipe(r.recipeId)">Update</button></td>
+          <td><button class="btn btn-danger" (click)="deleteRecipe(r.recipeId)">Delete</button></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>

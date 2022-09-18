@@ -1,0 +1,139 @@
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body" style="background-color: cornsilk;">
+                <div class="container col-6" style="background-color: aquamarine;">
+                    <h5 class="card-title" style="background-color: orange;">Get-Recipe By RecipeId</h5>
+                    <form [formGroup]="getItem" (ngSubmit)="getRecipeById(recipe.recipeId)">
+                        <label>Recipe Id :</label><br>
+                        <input type="number" min="1" placeholder="Enter Recipe Id Number" formControlName="recipeId"
+                            [(ngModel)]="recipe.recipeId">
+                        <br>
+                        <span style="color: red;" *ngIf="recipeId && recipeId.invalid && recipeId.touched">valid Recipe
+                            Id
+                            requied</span><br>
+                        <button [disabled]="getItem.invalid">Get Recipe</button>
+                    </form>
+                </div>
+                <table *ngIf="uniqueRecipe" class="table align-middle" border="solid">
+                    <thead>
+                        <tr>
+                            <th scope="col">Recipe ID</th>
+                            <th scope="col">Veg</th>
+                            <th scope="col">NO. of Serve</th>
+                            <th scope="col">Ingredient</th>
+                            <th scope="col">Instruction</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{uniqueRecipe.recipeId}}</td>
+                            <td>{{uniqueRecipe.veg}}</td>
+                            <td>{{uniqueRecipe.serve}}</td>
+                            <td>{{uniqueRecipe.ingredent}}</td>
+                            <td>{{uniqueRecipe.instruction}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body" style="background-color: cornsilk;">
+                <div class="container col-8" style="background-color: aquamarine;">
+                    <h5 class="card-title" style="background-color: orange;">Search by serve and Ingredient</h5>
+                    <form [formGroup]="getserveItem"
+                        (ngSubmit)="getRecipeByServeAndIngredient(recipe.serve,recipe.ingredent)">
+                        <label>Serve Person :</label><br>
+                        <input type="number" placeholder="no. of persons for serve" min="1" formControlName="serve"
+                            [(ngModel)]="recipe.serve">
+                        <br>
+                        <span style="color: red;" *ngIf="serve && serve.invalid && serve.touched">no. of person
+                            requied</span><br>
+
+                        <label>Ingredient name :</label><br>
+                        <input type="text " placeholder="Enter name of ingredient" formControlName="ingred"
+                            [(ngModel)]="recipe.ingredent">
+                        <br>
+                        <span style="color: red;" *ngIf="ingred && ingred.invalid && ingred.touched">Ingredient name
+                            requied</span><br>
+
+                        <button [disabled]="getserveItem.invalid">Get Recipe</button>
+                    </form>
+                </div>
+
+                <table *ngIf="show" class="table align-middle" border="solid">
+                    <thead>
+                        <tr>
+                            <th scope="col">Recipe ID</th>
+                            <th scope="col">Veg</th>
+                            <th scope="col">NO. of Serve</th>
+                            <th scope="col">Ingredient</th>
+                            <th scope="col">Instruction</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let r of serverecipe ">
+                            <td>{{r.recipeId}}</td>
+                            <td>{{r.veg}}</td>
+                            <td>{{r.serve}}</td>
+                            <td>{{r.ingredent}}</td>
+                            <td>{{r.instruction}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body" style="background-color: cornsilk;">
+                <div class="container col-8" style="background-color: aquamarine;">
+                    <h5 class="card-title" style="background-color: orange;">Search Veg or Non-veg Recipe</h5>
+                    <form [formGroup]="getvegItem" (ngSubmit)="getVegRecipe(recipe.veg)">
+                        <label>Veg<input type="radio" formControlName="veg" value="veg"
+                                [(ngModel)]="recipe.veg"></label> &nbsp;
+                        <label>&nbsp; Non-Veg<input type="radio" formControlName="veg" value="non-veg"
+                                [(ngModel)]="recipe.veg"></label>
+                        <span style="color: red;" *ngIf="veg && veg.invalid && veg.touched">only veg and non-veg
+                            requied</span><br>
+
+                        <button [disabled]="getvegItem.invalid">Get Recipe</button>
+                    </form>
+                </div>
+
+                <table *ngIf="showveg" class="table align-middle" border="solid">
+                    <thead>
+                        <tr>
+                            <th scope="col">Recipe ID</th>
+                            <th scope="col">Veg</th>
+                            <th scope="col">NO. of Serve</th>
+                            <th scope="col">Ingredient</th>
+                            <th scope="col">Instruction</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let vr of vegrecipe ">
+                            <td>{{vr.recipeId}}</td>
+                            <td>{{vr.veg}}</td>
+                            <td>{{vr.serve}}</td>
+                            <td>{{vr.ingredent}}</td>
+                            <td>{{vr.instruction}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>

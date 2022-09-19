@@ -11,6 +11,8 @@ The app has a server in Spring Boot using MySql database which provides APIs wit
 * Angular
 * BootStrap
 
+### DataBase Name : **recipe**
+
 ## WorkFlow of Spring Boot application:
 ``` controller -> service -> repository -> entity ```
 

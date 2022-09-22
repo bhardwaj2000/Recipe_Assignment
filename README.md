@@ -12,7 +12,9 @@ The app has a server in Spring Boot using MySql database which provides APIs wit
 * Angular
 * BootStrap
 
-### DataBase Name : **recipe**
+### DataBase Name : **new_recipe**
+
+### Table Name : **recipe**
 
 ## WorkFlow of Spring Boot application:
 ``` controller -> service -> repository -> entity ```
@@ -35,25 +37,37 @@ Here we handle all the Runtime exception of service and controller.
 
 * Fetch all Recipe: http://localhost:3050/recipes
 
-* Fetch Recipe by RecipeId: http://localhost:3050/recipes/1
+* Fetch Recipe by RecipeId: http://localhost:3050/recipes/{id}
+
+   ``` eg:- http://localhost:3050/recipes/1 ``` 
 
 <img src="./demo_pic/get1Recipe.png" alt="get recipe by Id" width="80%" height="220px"/>
 
-* Get all Veg Recipe : http://localhost:3050/recipes/type?type=veg
+* Get all Veg Recipe : http://localhost:3050/recipes/type
 
-* get Recipe by No. of serve and Ingredient: http://localhost:3050/recipes/?serve=5&ingredient=soleman
+``` eg:- http://localhost:3050/recipes/type?veg=veg ``` 
 
-* get Recipe by Instruction not Ingredient : http://localhost:3050/recipes/soleman/induction
+* get Recipe by No. of serve and Ingredient: http://localhost:3050/recipes/
+
+``` eg:- http://localhost:3050/recipes/?serve=5&ingredient=soleman ```
+
+* get Recipe by Instruction not Ingredient : http://localhost:3050/recipes/{ingredient}/{instruction}
+
+``` eg:- http://localhost:3050/recipes/soleman/induction ```
 
 * Add new Recipe :  http://localhost:3050/recipes
 
 <img src="./demo_pic/postRecipe.png" alt="post recipe" width="80%" height="220px"/>
 
-* Update Recipe : http://localhost:3050/recipes/3
+* Update Recipe : http://localhost:3050/recipes/{id}
+
+``` eg:- http://localhost:3050/recipes/3 ```
 
 <img src="./demo_pic/putRecipe.png" alt="get recipe by Id" width="80%" height="220px"/>
 
-* Delete Recipe : http://localhost:3050/recipes/4
+* Delete Recipe : http://localhost:3050/recipes/{id}
+
+``` eg:- http://localhost:3050/recipes/3 ```
 
 <img src="./demo_pic/deleteRecipe.png" alt="get recipe by Id" width="80%" height="220px"/>
 

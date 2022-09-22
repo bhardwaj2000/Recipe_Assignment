@@ -50,7 +50,7 @@ export class GetRecipeComponent implements OnInit {
       data => {
         console.log("data :" + data);
         this.uniqueRecipe = data;
-
+     //   console.log("ids :"+ids)
       })
   }
 

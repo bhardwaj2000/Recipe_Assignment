@@ -1,6 +1,7 @@
 package com.recipe.controller;
 
 import org.json.JSONException;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.skyscreamer.jsonassert.JSONAssert;
@@ -34,7 +35,7 @@ class RecipeControllerTest {
 		HttpEntity<String> entity = new HttpEntity<>(null, headers);
 		ResponseEntity<String> response = restTemplate.exchange(createURLWithPort("/recipes/1"), HttpMethod.GET, entity,
 				String.class);
-		String expected = "{\"recipeId\":1,\"veg\":\"veg\",\"serve\":5,\"ingredent\":\"potatoes\",\"instruction\":\"oven\"}";
+		String expected = "{\"recipeId\":1,\"type\":\"veg\",\"serve\":5,\"ingredent\":\"potatoes\",\"instruction\":\"oven\"}";
 
 		JSONAssert.assertEquals(expected, response.getBody(), false);
 	}
@@ -44,10 +45,10 @@ class RecipeControllerTest {
 
 	void testGetAllVegRecipe() throws JSONException {
 		HttpEntity<String> entity = new HttpEntity<>(null, headers);
-		ResponseEntity<String> actual = restTemplate.exchange(createURLWithPort("/recipes/veg?veg=veg"), HttpMethod.GET,
+		ResponseEntity<String> actual = restTemplate.exchange(createURLWithPort("/recipes/type?type=veg"), HttpMethod.GET,
 				entity, String.class);
 		// System.out.println(actual);
-		String expected = "[{\"recipeId\":1,\"veg\":\"veg\",\"serve\":5,\"ingredent\":\"potatoes\",\"instruction\":\"oven\"}]";
+		String expected = "[{\"recipeId\":1,\"type\":\"veg\",\"serve\":5,\"ingredent\":\"potatoes\",\"instruction\":\"oven\"}]";
 
 		JSONAssert.assertEquals(expected, actual.getBody(), false);
 	}
@@ -59,7 +60,7 @@ class RecipeControllerTest {
 		HttpEntity<String> entity = new HttpEntity<>(null, headers);
 		ResponseEntity<String> actual = restTemplate.exchange(
 				createURLWithPort("/recipes/?serve=5&ingredient=potatoes"), HttpMethod.GET, entity, String.class);
-		String expected = "[{\"recipeId\":1,\"veg\":\"veg\",\"serve\":5,\"ingredent\":\"potatoes\",\"instruction\":\"oven\"}]";
+		String expected = "[{\"recipeId\":1,\"type\":\"veg\",\"serve\":5,\"ingredent\":\"potatoes\",\"instruction\":\"oven\"}]";
 
 		JSONAssert.assertEquals(expected, actual.getBody(), false);
 	}
@@ -71,30 +72,31 @@ class RecipeControllerTest {
 		ResponseEntity<String> actual = restTemplate.exchange(createURLWithPort("/recipes/soleman/oven"),
 				HttpMethod.GET, entity, String.class);
 
-		String expected = "[{\"recipeId\":1,\"veg\":\"veg\",\"serve\":5,\"ingredent\":\"potatoes\",\"instruction\":\"oven\"}]";
+		String expected = "[{\"recipeId\":1,\"type\":\"veg\",\"serve\":5,\"ingredent\":\"potatoes\",\"instruction\":\"oven\"}]";
 		JSONAssert.assertEquals(expected, actual.getBody(), false);
 	}
 
 	// test for add a recipe
 	@Test
 	void testAddRecipe() throws JSONException {
-		Recipe recipe = new Recipe(4, "non-veg", 6, "pasta", "Induction");
+		Recipe recipe = new Recipe("non-veg", 6, "soup", "Induction");
 		HttpEntity<Recipe> entity = new HttpEntity<Recipe>(recipe, headers);
 		ResponseEntity<String> actual = restTemplate.exchange(createURLWithPort("/recipes"), HttpMethod.POST, entity,
 				String.class);
-		String expected = "{\"recipeId\":4,\"veg\":\"non-veg\",\"serve\":6,\"ingredent\":\"pasta\",\"instruction\":\"Induction\"}";
+		String expected = "{\"recipeId\":4,\"type\":\"non-veg\",\"serve\":6,\"ingredent\":\"soup\",\"instruction\":\"Induction\"}";
 		JSONAssert.assertEquals(expected, actual.getBody(), false);
 
 	}
 
 	// test for updating recipe by id
 	@Test
+//	@Disabled
 	void testUpdateRecipe() throws JSONException {
-		Recipe recipe = new Recipe(4, "non-veg", 6, "pasta", "stove");
+		Recipe recipe = new Recipe("non-veg", 6, "pasta", "stove");
 		HttpEntity<Recipe> entity = new HttpEntity<Recipe>(recipe, headers);
 		ResponseEntity<String> actual = restTemplate.exchange(createURLWithPort("/recipes/4"), HttpMethod.PUT, entity,
 				String.class);
-		String expected = "{\"recipeId\":4,\"veg\":\"non-veg\",\"serve\":6,\"ingredent\":\"pasta\",\"instruction\":\"stove\"}";
+		String expected = "{\"recipeId\":4,\"type\":\"non-veg\",\"serve\":6,\"ingredent\":\"pasta\",\"instruction\":\"stove\"}";
 		JSONAssert.assertEquals(expected, actual.getBody(), false);
 	}
 

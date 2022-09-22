@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.recipe"},{"l":"com.recipe.advice"},{"l":"com.recipe.controller"},{"l":"com.recipe.entity"},{"l":"com.recipe.exception"},{"l":"com.recipe.repository"},{"l":"com.recipe.service"}];updateSearchResults();

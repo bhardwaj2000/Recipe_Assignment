@@ -43,7 +43,7 @@ export class RecipeService {
 
   // http://localhost:3050/recipes/veg?veg=veg
   getVegRecipes(veg?: string): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(`${this.recipeUrl}/veg?veg=${veg}`);
+    return this.http.get<Recipe[]>(`${this.recipeUrl}/type?type=${veg}`);
   }
 
   //http://localhost:3050/recipes/?serve=5&ingredient=soleman

@@ -1,6 +1,6 @@
 export class Recipe {
     recipeId?:number;
-    veg?:string;
+    type?:string;
     serve?:number;
     ingredent?:string;
     instruction?:string;

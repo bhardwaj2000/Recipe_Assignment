@@ -21,8 +21,8 @@ class RecipeRepositoryTest {
 	@Test
 	void testFindByVeg() {
 
-		String expectedList = "Recipe [recipeId=1, veg=veg, serve=5, ingredent=potatoes, instruction=oven]";
-		List<Recipe> byVeg = repository.findByVeg("veg");
+		String expectedList = "Recipe [recipeId=1, type=veg, serve=5, ingredent=potatoes, instruction=oven]";
+		List<Recipe> byVeg = repository.findByType("veg");
 		String actuallist = byVeg.stream().map(Object::toString).collect(Collectors.joining(", "));
 		assertThat(actuallist).isEqualTo(expectedList);
 
@@ -31,7 +31,7 @@ class RecipeRepositoryTest {
 	// test : fetch by serve and ingredient
 	@Test
 	void testFindByServeAndIngredent() {
-		String expectedList = "Recipe [recipeId=1, veg=veg, serve=5, ingredent=potatoes, instruction=oven]";
+		String expectedList = "Recipe [recipeId=1, type=veg, serve=5, ingredent=potatoes, instruction=oven]";
 		List<Recipe> byServeAndIngredent = repository.findByServeAndIngredent(5, "potatoes");
 		String actuallist = byServeAndIngredent.stream().map(Object::toString).collect(Collectors.joining(", "));
 		assertThat(actuallist).isEqualTo(expectedList);
@@ -40,7 +40,7 @@ class RecipeRepositoryTest {
 	// test : fetch by instruction but given ingredient is not present
 	@Test
 	void testFindByInstructionAndNotByIngredent() {
-		String expectedList = "Recipe [recipeId=1, veg=veg, serve=5, ingredent=potatoes, instruction=oven]";
+		String expectedList = "Recipe [recipeId=1, type=veg, serve=5, ingredent=potatoes, instruction=oven]";
 		List<Recipe> byInstructionAndNotByIngredent = repository.findByInstructionAndNotByIngredent("soleman", "oven");
 		String actuallist = byInstructionAndNotByIngredent.stream().map(Object::toString)
 				.collect(Collectors.joining(", "));

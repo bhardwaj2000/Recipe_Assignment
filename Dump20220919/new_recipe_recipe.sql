@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.30, for Win64 (x86_64)
 --
--- Host: localhost    Database: recipe
+-- Host: localhost    Database: new_recipe
 -- ------------------------------------------------------
 -- Server version	8.0.30
 
@@ -24,10 +24,10 @@ DROP TABLE IF EXISTS `recipe`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `recipe` (
   `recipe_id` int NOT NULL,
-  `ingredent` varchar(255) DEFAULT NULL,
-  `instruction` varchar(255) DEFAULT NULL,
+  `ingredent` varchar(255) NOT NULL,
+  `instruction` varchar(255) NOT NULL,
   `serve` int NOT NULL,
-  `veg` varchar(255) DEFAULT NULL,
+  `type` varchar(255) NOT NULL,
   PRIMARY KEY (`recipe_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -38,7 +38,7 @@ CREATE TABLE `recipe` (
 
 LOCK TABLES `recipe` WRITE;
 /*!40000 ALTER TABLE `recipe` DISABLE KEYS */;
-INSERT INTO `recipe` VALUES (1,'potatoes','oven',5,'veg'),(2,'soleman','oven',4,'non-veg'),(3,'Biryani','Induction',6,'non-veg');
+INSERT INTO `recipe` VALUES (1,'potatoes','oven',5,'veg'),(2,'soleman','oven',5,'non-veg'),(3,'pasta','Induction',6,'non-veg'),(4,'cury','stove',5,'non-veg');
 /*!40000 ALTER TABLE `recipe` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-19 14:47:46
+-- Dump completed on 2022-09-22 14:22:48

@@ -7,8 +7,8 @@
         <br>
         <span style="color: red;" *ngIf="recipeId && recipeId.invalid && recipeId.touched">valid Recipe Id
             requied</span><br>
-        <label>Veg<input type="radio" formControlName="veg" value="veg" [(ngModel)]="recipe.veg"></label> &nbsp;
-        <label>&nbsp; Non-Veg<input type="radio" formControlName="veg" value="non-veg" [(ngModel)]="recipe.veg"></label>
+        <label>Veg<input type="radio" formControlName="veg" value="veg" [(ngModel)]="recipe.type"></label> &nbsp;
+        <label>&nbsp; Non-Veg<input type="radio" formControlName="veg" value="non-veg" [(ngModel)]="recipe.type"></label>
         <span style="color: red;" *ngIf="veg && veg.invalid && veg.touched">only veg and non-veg requied</span><br>
         <br>
         <label>Serve Person :</label><br>

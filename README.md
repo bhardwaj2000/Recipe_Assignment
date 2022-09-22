@@ -1,4 +1,4 @@
-# Recipe_manager_full
+# Recipe_manager
 Both Client And Server Side Application
 
 This app features a web page using Angular where we can create and list recipes with CRUD operations. 
@@ -7,6 +7,7 @@ The app has a server in Spring Boot using MySql database which provides APIs wit
 ## This Project is based on:
 * Maven
 * Spring Boot
+* log4j2 For Logging
 * Spring Data JPA( Mysql Database)
 * Angular
 * BootStrap
@@ -22,6 +23,12 @@ The app has a server in Spring Boot using MySql database which provides APIs wit
 * Spring DevTool
 * Spring Data JPA
 * Mysql Driver
+* log4j2 Logging
+* Validation
+
+## In ControllerAdvice:
+
+Here we handle all the Runtime exception of service and controller.
 
 ## In controller
 ``` we have made some API, which perform some CURD operations: ```
@@ -32,7 +39,7 @@ The app has a server in Spring Boot using MySql database which provides APIs wit
 
 <img src="./demo_pic/get1Recipe.png" alt="get recipe by Id" width="80%" height="220px"/>
 
-* Get all Veg Recipe : http://localhost:3050/recipes/veg?veg=veg
+* Get all Veg Recipe : http://localhost:3050/recipes/type?type=veg
 
 * get Recipe by No. of serve and Ingredient: http://localhost:3050/recipes/?serve=5&ingredient=soleman
 

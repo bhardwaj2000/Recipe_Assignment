@@ -29,7 +29,7 @@
                     <tbody>
                         <tr>
                             <td>{{uniqueRecipe.recipeId}}</td>
-                            <td>{{uniqueRecipe.veg}}</td>
+                            <td>{{uniqueRecipe.type}}</td>
                             <td>{{uniqueRecipe.serve}}</td>
                             <td>{{uniqueRecipe.ingredent}}</td>
                             <td>{{uniqueRecipe.instruction}}</td>
@@ -80,7 +80,7 @@
                     <tbody>
                         <tr *ngFor="let r of serverecipe ">
                             <td>{{r.recipeId}}</td>
-                            <td>{{r.veg}}</td>
+                            <td>{{r.type}}</td>
                             <td>{{r.serve}}</td>
                             <td>{{r.ingredent}}</td>
                             <td>{{r.instruction}}</td>
@@ -98,11 +98,11 @@
             <div class="card-body" style="background-color: cornsilk;">
                 <div class="container col-8" style="background-color: aquamarine;">
                     <h5 class="card-title" style="background-color: orange;">Search Veg or Non-veg Recipe</h5>
-                    <form [formGroup]="getvegItem" (ngSubmit)="getVegRecipe(recipe.veg)">
+                    <form [formGroup]="getvegItem" (ngSubmit)="getVegRecipe(recipe.type)">
                         <label>Veg<input type="radio" formControlName="veg" value="veg"
-                                [(ngModel)]="recipe.veg"></label> &nbsp;
+                                [(ngModel)]="recipe.type"></label> &nbsp;
                         <label>&nbsp; Non-Veg<input type="radio" formControlName="veg" value="non-veg"
-                                [(ngModel)]="recipe.veg"></label>
+                                [(ngModel)]="recipe.type"></label>
                         <span style="color: red;" *ngIf="veg && veg.invalid && veg.touched">only veg and non-veg
                             requied</span><br>
 
@@ -124,7 +124,7 @@
                     <tbody>
                         <tr *ngFor="let vr of vegrecipe ">
                             <td>{{vr.recipeId}}</td>
-                            <td>{{vr.veg}}</td>
+                            <td>{{vr.type}}</td>
                             <td>{{vr.serve}}</td>
                             <td>{{vr.ingredent}}</td>
                             <td>{{vr.instruction}}</td>

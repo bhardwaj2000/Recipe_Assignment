@@ -13,6 +13,7 @@ export class ViewRecipeComponent implements OnInit {
 
   searchText?: any;
   recipe?: Recipe[];
+  ids?:any[]=[];
   constructor(private recipeService: RecipeService, private route: Router) { }
 
   ngOnInit(): void {
@@ -24,8 +25,12 @@ export class ViewRecipeComponent implements OnInit {
       data => {
         console.log(data);
         this.recipe = data;
+        for (let index = 0; index < this.recipe.length; index++) {
+          this.ids?.push(this.recipe[index].recipeId)
+        }
       }
     );
+    
   }
 
   updateRecipe(id?: number) {

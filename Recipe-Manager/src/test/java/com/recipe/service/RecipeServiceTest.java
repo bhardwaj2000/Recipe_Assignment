@@ -1,8 +1,8 @@
 package com.recipe.service;
 
 import static org.mockito.Mockito.verify;
-
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -27,6 +27,7 @@ class RecipeServiceTest {
 
 	// test get all recipe service
 	@Test
+//	@Disabled
 	void testGetAllRecipe() {
 		service.getAllRecipe();
 		verify(repository).findAll();
@@ -44,7 +45,6 @@ class RecipeServiceTest {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			;
 		}
 
 	}
@@ -53,7 +53,7 @@ class RecipeServiceTest {
 	@Test
 //	@Disabled
 	void testAddRecipe() {
-		Recipe recipe = new Recipe(6, "non-veg", 3, "egg", "stove");
+		Recipe recipe = new Recipe("non-veg", 3, "egg", "stove");
 		service.addRecipe(recipe);
 		verify(repository).save(recipe);
 
@@ -63,7 +63,7 @@ class RecipeServiceTest {
 //	@Disabled
 	@Test
 	void testUpdateRecipe() {
-		Recipe recipe = new Recipe(3, "non-veg", 3, "egg", "stove");
+		Recipe recipe = new Recipe("non-veg", 3, "egg", "stove");
 		service.updateRecipe(recipe, 3);
 		verify(repository).save(recipe);
 	}
@@ -82,7 +82,7 @@ class RecipeServiceTest {
 	void testGetVegRecipe() {
 		String veg = "veg";
 		service.getVegRecipe(veg);
-		verify(repository).findByVeg(veg);
+		verify(repository).findByType(veg);
 	}
 
 	// Test Get Recipe By Serve And Ingredient service

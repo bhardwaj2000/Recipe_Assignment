@@ -19,6 +19,6 @@ public class ListEmptyException extends RuntimeException{
 	private static final long serialVersionUID = 1L;
 	public ListEmptyException(String errorMessage) {
 		super(errorMessage);
-		logger.warn("Inside class ListEmptyException!! constructor");
+		logger.warn("Inside class ListEmptyException!! constructor ListEmptyException!!");
 	}
 }

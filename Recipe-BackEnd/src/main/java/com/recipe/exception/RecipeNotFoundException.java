@@ -20,7 +20,7 @@ public class RecipeNotFoundException extends RuntimeException {
 
 	public RecipeNotFoundException(String message) {
 		super(message);
-		logger.warn("InSide RecipeNotFoundException!! constructor");
+		logger.warn("InSide RecipeNotFoundException!! constructor RecipeNotFoundException !!");
 	}
 
 }

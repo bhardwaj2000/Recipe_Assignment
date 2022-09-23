@@ -2,7 +2,6 @@ package com.recipe.service;
 
 import static org.mockito.Mockito.verify;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -27,7 +26,6 @@ class RecipeServiceTest {
 
 	// test get all recipe service
 	@Test
-//	@Disabled
 	void testGetAllRecipe() {
 		service.getAllRecipe();
 		verify(repository).findAll();
@@ -35,7 +33,6 @@ class RecipeServiceTest {
 
 	// test get recipebyId service
 	@Test
-//	@Disabled
 	void testGetRecipe() {
 		int recipeId = 2;
 		service.getRecipe(recipeId);
@@ -43,7 +40,6 @@ class RecipeServiceTest {
 		try {
 			verify(repository).findById(recipeId);
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 
@@ -51,7 +47,6 @@ class RecipeServiceTest {
 
 	// Test AddRecipe Service
 	@Test
-//	@Disabled
 	void testAddRecipe() {
 		Recipe recipe = new Recipe("non-veg", 3, "egg", "stove");
 		service.addRecipe(recipe);
@@ -60,7 +55,6 @@ class RecipeServiceTest {
 	}
 
 	// Test Update Recipe Service
-//	@Disabled
 	@Test
 	void testUpdateRecipe() {
 		Recipe recipe = new Recipe("non-veg", 3, "egg", "stove");
@@ -68,7 +62,6 @@ class RecipeServiceTest {
 		verify(repository).save(recipe);
 	}
 
-//	@Disabled
 	@Test
 	void testDeleteRecipe() {
 		int recipeId = 3;
@@ -77,7 +70,6 @@ class RecipeServiceTest {
 	}
 
 	// Test getAll VegRecipe Service
-//	@Disabled
 	@Test
 	void testGetVegRecipe() {
 		String veg = "veg";
@@ -86,7 +78,6 @@ class RecipeServiceTest {
 	}
 
 	// Test Get Recipe By Serve And Ingredient service
-//	@Disabled
 	@Test
 	void testGetServeAndIngerdient() {
 		int serve = 5;
@@ -96,7 +87,6 @@ class RecipeServiceTest {
 	}
 
 	// Test Get Recipe by Instruction Not Ingredient Service
-//	@Disabled
 	@Test
 	void testGetUniqueRecipe() {
 		String ingredient = "soleman", recipe = "oven";

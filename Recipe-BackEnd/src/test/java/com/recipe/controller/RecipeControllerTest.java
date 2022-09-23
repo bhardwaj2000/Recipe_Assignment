@@ -1,7 +1,6 @@
 package com.recipe.controller;
 
 import org.json.JSONException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.skyscreamer.jsonassert.JSONAssert;
@@ -90,7 +89,6 @@ class RecipeControllerTest {
 
 	// test for updating recipe by id
 	@Test
-//	@Disabled
 	void testUpdateRecipe() throws JSONException {
 		Recipe recipe = new Recipe("non-veg", 6, "pasta", "stove");
 		HttpEntity<Recipe> entity = new HttpEntity<Recipe>(recipe, headers);

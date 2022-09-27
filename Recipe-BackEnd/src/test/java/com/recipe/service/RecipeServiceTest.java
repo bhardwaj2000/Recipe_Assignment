@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.recipe.entity.Recipe;
+import com.recipe.exception.RecipeNotFoundException;
 import com.recipe.repository.RecipeRepository;
 
 @ExtendWith(MockitoExtension.class)
@@ -40,7 +41,7 @@ class RecipeServiceTest {
 		try {
 			verify(repository).findById(recipeId);
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new RecipeNotFoundException(e.getMessage());
 		}
 
 	}
@@ -72,9 +73,9 @@ class RecipeServiceTest {
 	// Test getAll VegRecipe Service
 	@Test
 	void testGetVegRecipe() {
-		String veg = "veg";
-		service.getVegRecipe(veg);
-		verify(repository).findByType(veg);
+		String type = "veg";
+		service.getVegRecipe(type);
+		verify(repository).findByType(type);
 	}
 
 	// Test Get Recipe By Serve And Ingredient service

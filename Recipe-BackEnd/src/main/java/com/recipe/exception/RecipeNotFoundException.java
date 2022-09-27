@@ -6,15 +6,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
- * {@link RecipeNotFoundException} this class to handle custom {@link Exception} of Recipe not found in DB
- * here return the response {@link HttpStatus} NOT_Found 
+ * {@link RecipeNotFoundException} this class to handle custom {@link Exception}
+ * of Recipe not found in DB here return the response {@link HttpStatus}
+ * NOT_Found
  */
-@ResponseStatus(value=HttpStatus.NOT_FOUND)
+@ResponseStatus(value = HttpStatus.NOT_FOUND)
 public class RecipeNotFoundException extends RuntimeException {
-	
 
-	private static Logger logger=LoggerFactory.getLogger(RecipeNotFoundException.class);
-	
+	private static Logger logger = LoggerFactory.getLogger(RecipeNotFoundException.class);
+
 	// this is default serialVersionUID
 	private static final long serialVersionUID = 1L;
 

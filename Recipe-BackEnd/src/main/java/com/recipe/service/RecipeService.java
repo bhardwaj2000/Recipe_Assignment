@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import com.recipe.entity.Recipe;
 
-
 /**
  * {@link RecipeService} this interface is used for handle repository services
  * this interface implements in {@link RecipeServiceImpl}
@@ -16,7 +15,7 @@ public interface RecipeService {
 
 	public List<Recipe> getAllRecipe();
 
-	public Recipe getRecipe(int id) ;
+	public Recipe getRecipe(int recipeId);
 
 	public List<Recipe> getVegRecipe(String veg);
 
@@ -29,6 +28,5 @@ public interface RecipeService {
 	public Recipe updateRecipe(Recipe recipe, int id);
 
 	public void deleteRecipe(int id);
-
 
 }

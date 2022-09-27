@@ -27,7 +27,7 @@ class RecipeControllerTest {
 
 	HttpHeaders headers = new HttpHeaders();
 
-	// test get recipe by id
+	// test get recipe by recipeId
 	@Test
 
 	void testGetRecipe() throws JSONException {
@@ -44,8 +44,8 @@ class RecipeControllerTest {
 
 	void testGetAllVegRecipe() throws JSONException {
 		HttpEntity<String> entity = new HttpEntity<>(null, headers);
-		ResponseEntity<String> actual = restTemplate.exchange(createURLWithPort("/recipes/type?type=veg"), HttpMethod.GET,
-				entity, String.class);
+		ResponseEntity<String> actual = restTemplate.exchange(createURLWithPort("/recipes/type?type=veg"),
+				HttpMethod.GET, entity, String.class);
 		// System.out.println(actual);
 		String expected = "[{\"recipeId\":1,\"type\":\"veg\",\"serve\":5,\"ingredent\":\"potatoes\",\"instruction\":\"oven\"}]";
 
@@ -87,7 +87,7 @@ class RecipeControllerTest {
 
 	}
 
-	// test for updating recipe by id
+	// test for updating recipe by recipeId
 	@Test
 	void testUpdateRecipe() throws JSONException {
 		Recipe recipe = new Recipe("non-veg", 6, "pasta", "stove");
@@ -97,7 +97,7 @@ class RecipeControllerTest {
 		String expected = "{\"recipeId\":4,\"type\":\"non-veg\",\"serve\":6,\"ingredent\":\"pasta\",\"instruction\":\"stove\"}";
 		JSONAssert.assertEquals(expected, actual.getBody(), false);
 	}
-
+	// Create URL for testing
 	private String createURLWithPort(String uri) {
 		return "http://localhost:" + port + uri;
 	}

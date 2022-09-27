@@ -8,12 +8,10 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-
 /**
  * {@link Recipe} this class used to create database and connect to database
- * here we used the new_recipe database
- * table name here same as class name = recipe
- * here added all the validation to table
+ * here we used the new_recipe database table name here same as class name =
+ * recipe here added all the validation to table
  */
 @Entity
 public class Recipe {
@@ -22,16 +20,16 @@ public class Recipe {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int recipeId;
 	@NotNull
-	@Size(min=3,message = "Enter veg or non-veg")
+	@Size(min = 3, message = "Enter veg or non-veg")
 	private String type;
 	@NotNull
-	@Min(value = 1,message = "Enter value of serve with min value 1")
+	@Min(value = 1, message = "Enter value of serve with min value 1")
 	private int serve;
 	@NotNull
-	@Size(min=3,message = "Enter Ingredient with minimum length 3")
+	@Size(min = 3, message = "Enter Ingredient with minimum length 3")
 	private String ingredent;
 	@NotNull
-	@Size(min=3,message = "Enter Instruction with minimum length 3")
+	@Size(min = 3, message = "Enter Instruction with minimum length 3")
 	private String instruction;
 
 	public Recipe() {

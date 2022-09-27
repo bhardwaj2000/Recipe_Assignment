@@ -33,7 +33,7 @@ public class RecipeController {
 
 	@Autowired
 	private RecipeService recipeService;
-	private static Logger logger=LoggerFactory.getLogger(RecipeController.class);
+	private static Logger logger = LoggerFactory.getLogger(RecipeController.class);
 
 	// Fetch all recipe
 	// http://localhost:3050/recipes
@@ -41,7 +41,7 @@ public class RecipeController {
 	public ResponseEntity<List<Recipe>> getAllRecipe() {
 		logger.info("Present in RecipeController!! getAllRecipe!!");
 		List<Recipe> recipeList = recipeService.getAllRecipe();
-		if(recipeList.isEmpty()) {
+		if (recipeList.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 
@@ -64,7 +64,7 @@ public class RecipeController {
 	public ResponseEntity<List<Recipe>> getAllVegRecipe(@RequestParam(value = "type") String type) {
 		logger.info("Present in RecipeController!! UpdateRecipe!!");
 		List<Recipe> vegrecipeList = recipeService.getVegRecipe(type);
-		if(vegrecipeList.isEmpty()) {
+		if (vegrecipeList.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 
@@ -78,7 +78,7 @@ public class RecipeController {
 			@RequestParam(value = "ingredient") String ingredient) {
 		logger.info("Present in RecipeController!! getRecipeByServeAndIngredient!!");
 		List<Recipe> matchRecipeList = recipeService.getServeAndIngerdient(serve, ingredient);
-		if(matchRecipeList.isEmpty()) {
+		if (matchRecipeList.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 
@@ -102,10 +102,10 @@ public class RecipeController {
 	// add new recipe , post method
 	// http://localhost:3050/recipes
 	@PostMapping("/recipes")
-	public ResponseEntity<Recipe> addRecipe(@Valid @RequestBody Recipe recipe){
+	public ResponseEntity<Recipe> addRecipe(@Valid @RequestBody Recipe recipe) {
 		logger.info("Present in RecipeController!! addRecipe!!");
 		Recipe recipeAdded = recipeService.addRecipe(recipe);
-			return ResponseEntity.status(HttpStatus.CREATED).body(recipeAdded);
+		return ResponseEntity.status(HttpStatus.CREATED).body(recipeAdded);
 
 	}
 
@@ -115,8 +115,8 @@ public class RecipeController {
 	public ResponseEntity<Recipe> updateRecipe(@Valid @RequestBody Recipe recipe, @PathVariable("id") int id) {
 
 		logger.info("Present in RecipeController!! UpdateRecipe!!");
-			Recipe updatedRecipe = recipeService.updateRecipe(recipe, id);
-			return ResponseEntity.status(HttpStatus.ACCEPTED).body(updatedRecipe);
+		Recipe updatedRecipe = recipeService.updateRecipe(recipe, id);
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body(updatedRecipe);
 
 	}
 
@@ -124,9 +124,9 @@ public class RecipeController {
 	// http://localhost:3050/recipes/1
 	@DeleteMapping("/recipes/{id}")
 	public ResponseEntity<Object> deleteRecipe(@PathVariable("id") int id) {
-			logger.info("Present in RecipeController!! DeleteRecipe!!");
-			recipeService.deleteRecipe(id);
-			return ResponseEntity.status(HttpStatus.ACCEPTED).body("Recipe deleted with id : " + id);
+		logger.info("Present in RecipeController!! DeleteRecipe!!");
+		recipeService.deleteRecipe(id);
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body("Recipe deleted with id : " + id);
 
 	}
 

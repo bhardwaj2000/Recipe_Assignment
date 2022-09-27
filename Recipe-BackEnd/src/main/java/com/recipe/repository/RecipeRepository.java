@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 import com.recipe.entity.Recipe;
 
 /**
- * {@link RecipeRepository} this class to handle custom and general {@link JpaRepository}
- * here custom findByInstructionAndNotByIngredent method is used
- * here use {@link NativeQuery} for MySql database
+ * {@link RecipeRepository} this class to handle custom and general
+ * {@link JpaRepository} here custom findByInstructionAndNotByIngredent method
+ * is used here use {@link NativeQuery} for MySql database
  */
 @Repository
 public interface RecipeRepository extends JpaRepository<Recipe, Integer> {

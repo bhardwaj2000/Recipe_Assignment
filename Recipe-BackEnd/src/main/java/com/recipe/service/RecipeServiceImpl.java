@@ -24,6 +24,13 @@ public class RecipeServiceImpl implements RecipeService {
 	private RecipeRepository recipeRepository;
 	private static Logger logger=LoggerFactory.getLogger(RecipeServiceImpl.class);
 
+	public static final String UNKONWN_ID_ERROR="Recipe with given ID %d not found in DB";
+	public static final String EMPTY_LIST_ERROR="List of %s Recipe is not found in DB";
+	public static final String EMPTY_TABLE_ERROR="Recipe table is empty in DB";
+	public static final String UNKONWN_INGRE_ERROR="List of %d serve and %s ingredient not found in DB.";
+	public static final String UNKNOWN_INSTRU_ERROR="No List with %s instruction not %s ingredient in DB.";
+
+	
 	public RecipeServiceImpl(RecipeRepository recipeRepository) {
 		this.recipeRepository = recipeRepository;
 	}
@@ -35,7 +42,7 @@ public class RecipeServiceImpl implements RecipeService {
 		try {
 			List<Recipe> allRecipe = recipeRepository.findAll();
 			if(allRecipe.isEmpty()) {
-				throw new ListEmptyException(" Recipe DB is empty");
+				throw new ListEmptyException(EMPTY_TABLE_ERROR);
 			}
 			return allRecipe;
 		} catch (Exception e) {
@@ -48,7 +55,7 @@ public class RecipeServiceImpl implements RecipeService {
 	public Recipe getRecipe(int id) {
 		logger.info("InSide class RecipeService!!! Method getRecipeById!!!");
 		return this.recipeRepository.findById(id).orElseThrow(
-				()-> new RecipeNotFoundException("No Recipe found with given Id : "+id));
+				()-> new RecipeNotFoundException(String.format(UNKONWN_ID_ERROR, id)));
 
 	}
 
@@ -59,7 +66,7 @@ public class RecipeServiceImpl implements RecipeService {
 		try {
 			List<Recipe> vegRecipe = recipeRepository.findByType(veg);
 			if(vegRecipe.isEmpty()) {
-				throw new ListEmptyException(String.format("No List of %s type Recipe in DB", veg));
+				throw new ListEmptyException(String.format(EMPTY_LIST_ERROR, veg));
 			}
 			return vegRecipe;
 		} catch (Exception e) {
@@ -75,7 +82,7 @@ public class RecipeServiceImpl implements RecipeService {
 		try {
 			matchRecipe = recipeRepository.findByServeAndIngredent(serve, ingredent);
 			if(matchRecipe.isEmpty()) {
-				throw new ListEmptyException(String.format("No List with %d serve and %s ingredient in DB.",serve,ingredent));
+				throw new ListEmptyException(String.format(UNKONWN_INGRE_ERROR,serve,ingredent));
 			}
 			return matchRecipe;
 		} catch (Exception e) {
@@ -92,7 +99,7 @@ public class RecipeServiceImpl implements RecipeService {
 		try {
 			matchRecipe = recipeRepository.findByInstructionAndNotByIngredent(ingre, instru);
 			if(matchRecipe.isEmpty()) {
-				throw new ListEmptyException(String.format("No List with %s instruction not %s ingredient in DB.",instru,ingre));
+				throw new ListEmptyException(String.format(UNKNOWN_INSTRU_ERROR,instru,ingre));
 			}
 			return matchRecipe;
 		} catch (Exception e) {
@@ -113,7 +120,7 @@ public class RecipeServiceImpl implements RecipeService {
 	public Recipe updateRecipe(Recipe recipe, int id) {
 		logger.info("InSide class RecipeService!!! Method  DeleteRecipe!!!");
 		Recipe recipe2=this.recipeRepository.findById(id).orElseThrow(
-				()-> new RecipeNotFoundException(String.format("No Recipe with given id : %d found in DB for Update", id)));
+				()-> new RecipeNotFoundException(String.format(UNKONWN_ID_ERROR, id)));
 		recipe2.setRecipeId(id);
 		recipe2.settype(recipe.gettype());
 		recipe2.setServe(recipe.getServe());
@@ -129,7 +136,7 @@ public class RecipeServiceImpl implements RecipeService {
 		
 		logger.info("InSide class RecipeService!!! Method  DeleteRecipe!!!");
 		Recipe recipe=this.recipeRepository.findById(id).orElseThrow(
-				()-> new RecipeNotFoundException(String.format("No Recipe with given id : %d found in DB For delete",id)));
+				()-> new RecipeNotFoundException(String.format(UNKONWN_ID_ERROR, id)));
 		this.recipeRepository.delete(recipe);
 
 	}
